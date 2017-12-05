@@ -1,0 +1,40 @@
+Adapted from Solidity documentation.
+For more check it out here https://media.readthedocs.org/pdf/solidity/latest/solidity.pdf
+
+pragma solidity ^0.4.0;
+
+contract SimpleStorage {
+    uint storedData;
+
+    function set(uint x) {
+        storedData = x;
+    }
+
+    function get() constant returns (uint) {
+        return storedData;
+    }
+}
+
+#####################################
+############### Notes ###############
+#####################################
+
+From the code above.
+The first line tell indicates that the source code is written for 
+Solidity version 0.4.0
+
+pragma keyword instructs the compiler on how to treat the source code
+
+A contract in a the sense of Solidity is a collection of code(its functions) &
+data(its state) that resides at a specific address on the Etherium blockchain.
+
+unit storedData declares a state variable storedData of type unit(un assigned
+integer of 256 bits).
+Think of storedData as a single slot in a database that can be queried and
+altered by calling functions of the code that manages the database.
+In Etherium, this is always the owning contract.
+The functions set and get can be used to modify or retrieve the value of the
+variable.
+
+To access the value of the variable, you do not need the prefix `this` as
+in other languages.
