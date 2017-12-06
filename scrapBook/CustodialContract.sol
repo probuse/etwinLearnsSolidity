@@ -5,6 +5,9 @@ contract CustodialContract {
 
     address client;
     bool _switch = false;
+    event UpdateStatus(string _msg);
+    event UserStatus(string _msg, address user, uint amount);
+
     function CustodialContract(){
         client = msg.sender;
     }
@@ -14,22 +17,23 @@ contract CustodialContract {
             throw;            
         } else {
             _;
-        }        _
+        } 
     }
 
     function depositFunds() payable {
-
+        UserStatus("User Has transfered some money", msg.sender, msg.value);
     }
 
-    function withdrawFunds(uint amount) {
+    function withdrawFunds(uint amount) ifClient {
         if (client.send(amount)) {
+            UpdateStatus("User has tranfered some money");
             _switch = true;
         } else {
             _switch = false;
         }
     }
 
-    function getFunds() constant returns(uint) {
+    function getFunds() ifClient constant returns(uint) {
         return this.balance;
     }
 
