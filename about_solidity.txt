@@ -38,3 +38,13 @@ variable.
 
 To access the value of the variable, you do not need the prefix `this` as
 in other languages.
+
+
+
+events in the blockchain
+=========================
+Events are just some piece of code that you can you can put inside your
+functions that will record something on the blockchain.
+This can be an integer, a string or any basic type in solidity.
+Events are usually inorder to keep historical trace of the transactions
+that a given account(address)
